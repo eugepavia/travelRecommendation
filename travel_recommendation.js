@@ -1,11 +1,16 @@
 let locations = [];
 const searchButton = document.getElementById('searchButton');
 const resetButton = document.getElementById('resetButton');
+const resultsDiv = document.getElementById('searchResults');
+const introductionDiv = document.getElementById('introduction');
+const restultsContainer = document.getElementById('results');
 
 function searchLocation() {
     const input = document.getElementById('destinationInput').value.toLowerCase();
-    const resultsDiv = document.getElementById('searchResults');
+
     resultsDiv.innerHTML = ''; // Reset search
+    restultsContainer.hidden = false; // Show results div containter
+    introductionDiv.setAttribute('hidden',true); // Hide introduction div
 
     // key words
     const keywordCountry = ['country','countries'];
@@ -17,12 +22,12 @@ function searchLocation() {
         .then (data => {
             if (keywordCountry.find(item => item.toLocaleLowerCase() === input)) {
                 data.countries.forEach(element => {
-                    element.cities.forEach(city => createCard(city,resultsDiv));
+                    element.cities.forEach(city => createCard(city));
                 });
             } else if (keywordTemple.find(item => item.toLocaleLowerCase() === input)) {
-                // code temple
+                data.temples.forEach(temple => createCard(temple));
             } else if (keywordBeach.find(item => item.toLocaleLowerCase() === input)) {
-                // code beac
+                data.beaches.forEach(beach => createCard(beach));
             } else {
                 resultsDiv.innerHTML = 'Destination not found :(';
             }
@@ -35,8 +40,8 @@ function searchLocation() {
 }
 
 // To create search result cards
-function createCard(element,div) {
-    console.log('entered createCard');
+// Receives an element from the JSON and the div where it will be displayed
+function createCard(element) {
     // Retreive info
     const name = element.name;
     const img = element.imageUrl;
@@ -56,9 +61,16 @@ function createCard(element,div) {
     resultCard.appendChild(resultContent);
 
     // Show cards on Search Results div
-    div.appendChild(resultCard);
+    resultsDiv.appendChild(resultCard);
 
     return;
 }
 
+function resetSearch() {
+    resultsDiv.innerHTML = ''; // Reset search
+    restultsContainer.hidden = true; // Hide results div containter
+    introductionDiv.hidden = false; // Hide introduction div
+}
+
 searchButton.addEventListener('click',searchLocation);
+resetButton.addEventListener('click',resetSearch);
