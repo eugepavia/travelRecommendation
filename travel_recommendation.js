@@ -16,31 +16,8 @@ function searchLocation() {
         .then(response => response.json())
         .then (data => {
             if (keywordCountry.find(item => item.toLocaleLowerCase() === input)) {
-                // Go through every country
                 data.countries.forEach(element => {
-                    // Go through every city
-                    element.cities.forEach(city => {
-                        // Retreive city info
-                        const name = city.name;
-                        const img = city.imageUrl;
-                        const description = city.description;
-
-                        // Create elements
-                        const resultCard = document.createElement('div');
-                        resultCard.classList.add('resultCard'); // card containter (img and content)
-                        const resultImg = document.createElement('img');
-                        resultImg.src = img; // card image
-                        const resultContent = document.createElement('div');
-                        resultContent.classList.add('resultContent'); // content containter (h3 and p)
-
-                        // Fill elements
-                        resultContent.innerHTML = `<h3>${name}</h3> <p>${description}</p>`
-                        resultCard.appendChild(resultImg);
-                        resultCard.appendChild(resultContent);
-
-                        // Show cards on Search Results div
-                        resultsDiv.appendChild(resultCard);
-                    })
+                    element.cities.forEach(city => createCard(city,resultsDiv));
                 });
             } else if (keywordTemple.find(item => item.toLocaleLowerCase() === input)) {
                 // code temple
@@ -57,6 +34,31 @@ function searchLocation() {
 
 }
 
+// To create search result cards
+function createCard(element,div) {
+    console.log('entered createCard');
+    // Retreive info
+    const name = element.name;
+    const img = element.imageUrl;
+    const description = element.description;
 
+    // Create containers and elements
+    const resultCard = document.createElement('div');
+    resultCard.classList.add('resultCard'); // card containter (img and content)
+    const resultImg = document.createElement('img');
+    resultImg.src = img; // card image
+    const resultContent = document.createElement('div');
+    resultContent.classList.add('resultContent'); // content containter (h3 and p)
+
+    // Fill elements
+    resultContent.innerHTML = `<h3>${name}</h3> <p>${description}</p>`
+    resultCard.appendChild(resultImg);
+    resultCard.appendChild(resultContent);
+
+    // Show cards on Search Results div
+    div.appendChild(resultCard);
+
+    return;
+}
 
 searchButton.addEventListener('click',searchLocation);
