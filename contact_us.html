@@ -14,11 +14,36 @@
             <li><a href='./travel_recommendation.html' id='home'>Home</a></li>
             <li><a href='./about_us.html' id='about'>About us</a></li>
             <li><a href='./contact_us.html' id='contact'>Contact us</a></li>
-            <li><input type='text' id='destinationInput' placeholder='Enter a destination'></li>
-            <li><button id='searchButton'>Search</button></li>
-            <li><button id='resetButton'>Reset</button></li>
         </ul>
     </nav>
+
+    <div class='container'>
+        <h1>Contact Us</h1>
+        <p>Questions? We are happy to listen!</p>
+    </div>
+
+    <div class='container'>
+        <div class='contactForm'>
+
+            <div>
+                <label for='name'>Name:</label>
+                <input type='text' id='name' name='name' required>
+            </div>
+
+            <div>
+                <label for='email'>Email:</label>
+                <input type='email' id='email' name='email' required>
+            </div>
+
+            <div>
+                <label for='message'>Message:</label>
+                <textarea rows='5' id='message' name='message' required>
+            </div>
+
+            <button type='submit' onclick="submitContact()">Submit</button>
+
+        </div>
+    </div>
 
     <script src='./travel_recommendation.js'></script>
 
