@@ -57,6 +57,6 @@ function searchLocation() {
 
 }
 
-// cada uno es un resultCard, que incluye una img y un resultContent con h3 y p
+
 
 searchButton.addEventListener('click',searchLocation);
