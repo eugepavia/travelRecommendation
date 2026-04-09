@@ -1,4 +1,198 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* BACKGROUND GENERAL */
 body {
     background-image: url('./media/background.jpg');
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+/* OVERLAY PARA MEJOR LEGIBILIDAD */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 15, 25, 0.75);
+    z-index: -1;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+nav h1 {
+    font-size: 24px;
+    color: #ff7849;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ff7849;
+}
+
+/* INPUTS NAV */
+nav input {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+nav button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ff7849;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background-color: #ff5722;
+}
+
+/* CONTENEDORES GENERALES */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(30, 41, 59, 0.75);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* TITULOS */
+.container h1 {
+    margin-bottom: 15px;
+    color: #ff7849;
+}
+
+/* TEXTO */
+.container p {
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+/* TEAM SECTION */
+.teammate {
+    margin-top: 20px;
+    padding: 15px;
+    border-left: 4px solid #ff7849;
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.teammate:hover {
+    transform: translateY(-5px);
+}
+
+/* IDs DE TEAM */
+#teammateName {
+    font-weight: bold;
+    font-size: 18px;
+    color: #f97316;
+}
+
+#teammateRole {
+    font-size: 14px;
+    color: #cbd5f5;
+    margin-bottom: 8px;
+}
+
+#teammateIntro {
+    font-size: 14px;
+}
+
+/* FORMULARIO */
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contactForm label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.contactForm input,
+.contactForm textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #1e293b;
+    color: white;
+}
+
+.contactForm textarea {
+    resize: none;
+}
+
+/* BOTON FORM */
+.contactForm button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ff7849, #ff5722);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.contactForm button:hover {
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
 }
