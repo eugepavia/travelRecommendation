@@ -1,9 +1,15 @@
-let locations = [];
 const searchButton = document.getElementById('searchButton');
 const resetButton = document.getElementById('resetButton');
 const resultsDiv = document.getElementById('searchResults');
 const introductionDiv = document.getElementById('introduction');
 const restultsContainer = document.getElementById('results');
+
+const timeZones = [['Sydney','Australia/Queensland'],['Melbourne','Australia/Queensland'],
+                ['Tokyo','Japan'],['Kyoto','Japan'],
+                ['Rio de Janeiro','Brazil/East'],['São Paulo','Brazil/East'],
+                ['Angkor Wat','Asia/Bangkok'],['Taj Mahal','Asia/Kolkata'],
+                ['Bora Bora','Pacific/Tahiti'],['Copacabana Beach','Brazil/East'],];
+
 
 function searchLocation() {
     const input = document.getElementById('destinationInput').value.toLowerCase();
@@ -56,11 +62,11 @@ function createCard(element) {
     resultContent.classList.add('resultContent'); // content containter (h3 and p)
 
     // Fill elements
-    resultContent.innerHTML = `<h3>${name}</h3> <p>${description}</p>`
+    resultContent.innerHTML = `<h3>${name}</h3> <p>${description}</p> <p>Current time: ${displayTime(element.name)}</p>`
     resultCard.appendChild(resultImg);
     resultCard.appendChild(resultContent);
 
-    // Show cards on Search Results div
+    // Add cards on Search Results div
     resultsDiv.appendChild(resultCard);
 
     return;
@@ -70,7 +76,29 @@ function resetSearch() {
     resultsDiv.innerHTML = ''; // Reset search
     restultsContainer.hidden = true; // Hide results div containter
     introductionDiv.hidden = false; // Hide introduction div
+    return;
 }
+
+// To display current time at result cards
+function displayTime(location) {
+    const locationEdit = location.split(','); // cut only place name
+    let time = ''
+
+    // Check for match in timeZones array
+    for (i = 0; i < timeZones.length; i++) {
+        if (timeZones[i][0] == locationEdit[0]) {
+            time = timeZones[i][1];
+        }
+    };
+
+    if (time !== '') {
+        const options = {timeZone:time, hour12:true};
+        return new Date().toLocaleTimeString('en-US',options);
+    } else {
+        return 'Not available';
+    }
+}
+
 
 searchButton.addEventListener('click',searchLocation);
 resetButton.addEventListener('click',resetSearch);
