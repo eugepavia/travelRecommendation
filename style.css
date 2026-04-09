@@ -146,6 +146,7 @@ nav button:hover {
 .contactForm label {
     font-size: 14px;
     margin-bottom: 5px;
+    color: white;
 }
 
 .contactForm input,
@@ -155,7 +156,7 @@ nav button:hover {
     border-radius: 8px;
     border: none;
     outline: none;
-    background: #1e293b;
+    background: #e2e8f0;
     color: white;
 }
 
