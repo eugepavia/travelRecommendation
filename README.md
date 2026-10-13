@@ -19,7 +19,7 @@ Diseño web básico para una página de recomendaciones de destinos turísticos.
 - Resultados de búsqueda en forma de tarjetas. Incluye una fotografía, una breve descripción y la hora del lugar en el momento de la búsqueda 
 
 ## :key: Acceso
-Enlace de demostración: <https://eugepavia.github.io/travelRecommendation/travel_recommendation.html>
+Enlace de demostración: <https://eugepavia.github.io/travelRecommendation/>
 
 ## :wave: Sobre mí
 ¡Hola! Soy Eugenia, programadora Backend en crecimiento. Empecé como profesora de matemáticas, pero mi interés por el desarrollo de software me llevó a formarme en tecnologías Backend.
