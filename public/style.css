@@ -158,7 +158,8 @@ nav button:hover {
     border: none;
     outline: none;
     background: #e2e8f0;
-    color: white;
+    color: black;
+    
 }
 
 .contactForm textarea {

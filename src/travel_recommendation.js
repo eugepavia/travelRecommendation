@@ -23,8 +23,8 @@ function searchLocation() {
     const keywordTemple = ['temple','temples'];
     const keywordBeach = ['beach','beaches'];
 
-    fetch('travel_recommendation_api.json')
-        .then(response => response.json())
+    fetch('./travel_recommendation_api.json')
+        .then(response => {response.json()})
         .then (data => {
             if (keywordCountry.find(item => item.toLocaleLowerCase() === input)) {
                 data.countries.forEach(element => {
