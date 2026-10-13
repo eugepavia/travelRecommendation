@@ -23,8 +23,13 @@ function searchLocation() {
     const keywordTemple = ['temple','temples'];
     const keywordBeach = ['beach','beaches'];
 
-    fetch('./travel_recommendation_api.json')
-        .then(response => {response.json()})
+    fetch('../src/travel_recommendation_api.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("An error has occured: ",response.status);
+            }
+            return response.json();
+        })
         .then (data => {
             if (keywordCountry.find(item => item.toLocaleLowerCase() === input)) {
                 data.countries.forEach(element => {
